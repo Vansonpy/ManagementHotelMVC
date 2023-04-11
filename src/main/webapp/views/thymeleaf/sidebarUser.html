@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Quan ly phong</title>
+</head>
+<body id="body-pd">
+<div th:fragment="sidebar1">
+    <header class="header" id="header">
+    	<!-- <div th:replace="navigationLogin :: navigate"></div> -->
+        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+        <nav class="nav">
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Fsoft Hotel</span> </a>
+               <div class="nav_list"> 
+                 <a th:href="@{/viewAllRooms}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i><span class="nav_name">Rooms Management</span> </a> 
+                 <a th:href="@{/viewAllSales}" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Sales Management</span> </a>
+                 <a th:href="@{/viewUser}" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">My Info</span> </a>
+                </div>
+            </div>
+             <a th:href="@{/signout}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+    </div>
+    </div>
+	
+</body>
+   <script th:src="@{/js/sidebar.js}"></script>
+</html>

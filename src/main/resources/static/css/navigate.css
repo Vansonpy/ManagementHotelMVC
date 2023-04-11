@@ -1,0 +1,43 @@
+.navbar{
+	background-color: white;
+	padding: 0 10vh;
+	display: flex;
+	height: 10vh;
+}
+.navbar-left{
+	display: flex;
+	width: 40%;
+}
+.form-link-main{
+	padding: 10px 0;
+	margin-right: 2vh;
+}
+.dropdown-link {
+	position: relative;
+	display: inline-block;
+	padding: 10px 0;
+	text-align: center;
+	margin-right: 2vh;
+}
+
+.content-link {
+	 display:none; 
+	position: absolute;
+	z-index: 99;
+	width: 100%;
+	margin-top: 10px;
+	
+}
+
+.dropdown-link:hover .content-link {
+	display: block;
+}
+
+.form-link{
+	width: 25vh;
+	text-align: center;
+	background-color: white;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	padding-bottom: 15px;
+}

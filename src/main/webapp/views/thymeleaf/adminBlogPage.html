@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bookNow.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/blog.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>Blog page</title>
+</head>
+<body>
+	<div th:replace="adminNavigation :: navigate"></div>
+	<!--
+	<div class="columns">
+		<div class="column is-full">
+			<figure class="image is-3by1">
+				<img
+					src="https://cdn.baogiaothong.vn/files/nam.pham/2018/05/07/164230-flc_8_zwdw.jpg">
+			</figure>
+		</div>
+	</div>
+	-->
+	<section id="blog">
+		<div class="blog-heading">
+			<h3>Blog Posts</h3>
+		</div>
+
+		<div class="blog-container">
+			<div class="blog-box" th:each="borderContent : ${listBorder}">
+				<form th:action="@{/updatePage}" method="post"
+			enctype="multipart/form-data" th:object="${page}">
+					<div class="blog-img"
+						th:each="image : ${borderContent.listUrlImage}">
+						<img th:src="${image}" alt="">
+					</div>
+
+					<div class="blog-text">
+						<input th:value="${borderContent.subContent}" readonly="readonly"
+							class="subContent"> <input
+							th:value="${borderContent.title}" readonly="readonly"
+							class="title">
+						<textarea th:text="${borderContent.listContent}"
+							class="content-text" readonly="readonly"></textarea>
+						<a href="#">Read More</a>
+					</div>
+					<button class="editButton" type="button">🖊</button>
+				</form>
+			</div>
+		</div>
+	</section>
+<script th:src="@{/js/adminBlog.js}"></script>
+	<div th:replace="footer :: footer"></div>
+</body>
+</html>

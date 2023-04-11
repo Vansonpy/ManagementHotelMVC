@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/managerMember.css}">
+	<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>Management Member</title>
+<style>
+td {
+	text-align: center;
+}
+</style>
+</head>
+
+<body>
+<div th:replace="adminNavigation :: navigate"></div>
+	<div class="searchform">
+	<form action="">
+	<input type="text" placeholder="Enter UserName ..." name="q">
+	<button type="submit">Search</button>
+	</form>
+	</div>
+
+	<table>
+		<tr>
+			<th>FULLNAME:</th>
+			<th>EMAIL:</th>
+			<th>PHONE:</th>
+			<th>GENDER:</th>
+			<th>USERNAME:</th>
+			<th>VIEW</th>
+
+		</tr>
+		<tr th:each="row,rowStat : ${listUsers}">
+			<td th:text="${row.fullName}"></td>
+			<td th:text="${row.email}"></td>
+			<td th:text="${row.phone}"></td>
+			<td th:text="${row.gender} == 1 ? 'Male' : 'Female'"></td>
+			<td th:text="${row.userName}"></td>
+			<td><a th:href="@{/...}">View</a></td>
+		</tr>
+		<tr>
+		</tr>
+	</table>
+	<div style="display: flex;margin-left: 50vh">
+		<div th:each="countField, state : ${countFields}">
+			<form method="post"
+				th:action="@{/viewAllUsersByButton/(index=${state.index})}">
+				<input type="submit" th:value="${state.count}" name="submit">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="navbar" th:fragment="navigate">
+
+		<div class="navbar-left">
+			
+				<div class="form-link-main">
+					<a class="nav-link" th:href="@{/}"> Home |</a>
+				</div>
+				<div class="form-link-main">
+					<a class="nav-link" th:href="@{/booknow}"> Book Now |</a>
+				</div>
+				<div class="dropdown-link">
+					More
+					<div class="content-link">
+						<div class="form-link">
+							<a class="nav-link" th:href="@{/about}"> About </a>
+							<hr>
+							<a class="nav-link" th:href="@{/blog}"> Blog </a>
+							<hr>
+							<a class="nav-link" th:href="@{/room}"> Room </a>
+							<hr>
+							<a class="nav-link" th:href="@{/contact}"> Contact </a>
+						</div>
+					</div>
+				</div>
+			<div
+				th:unless="${#httpServletRequest.getSession().getAttribute('userSession') == null}">
+				<div
+					th:unless="${#httpServletRequest.getSession().getAttribute('userSession').getRole()=='1'}">
+
+					<div class="dropdown-link">
+						| Options
+
+						<div class="content-link">
+							<div class="form-link">
+								<a class="nav-link" th:href="@{/viewSalesUser}"
+									style="height: 25px"> View Rooms </a>
+								<hr>
+								<a class="nav-link" th:href="@{/viewUser}"
+									style="height: 25px">My Info </a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="navbar-right">
+			<div
+				th:if="${#httpServletRequest.getSession().getAttribute('userSession') == null}">
+				<div class="navbar-item">
+					<div class="buttons">
+						<a th:href="@{/registerPage}" class="buttons" id="SignUpBtn">
+							<strong>Sign up</strong>
+						</a>| <a th:href="@{/loginPage}" class="buttons"> Login <img
+							src="   https://cdn-icons-png.flaticon.com/512/9070/9070510.png "
+							style="width: 15px; height: 15px;"></a>
+					</div>
+				</div>
+			</div>
+			<div
+				th:unless="${#httpServletRequest.getSession().getAttribute('userSession') == null}">
+				<div
+					th:object="${#httpServletRequest.getSession().getAttribute('userSession')}">
+					<div class="navbar-item">
+						<strong>Welcome: <span th:text="*{userName}">N/A</span></strong> |<a
+							th:href="@{/signout}" style="margin: 0;">Logout <img
+							src="https://cdn-icons-png.flaticon.com/512/3889/3889524.png"
+							style="width: 15px; height: 15px;"></a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

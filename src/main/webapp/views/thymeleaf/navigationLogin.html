@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="navbar" th:fragment="navigate">
+		<div class="navbar-left">
+			<div class="form-link-main">
+				<a class="nav-link" th:href="@{/}"> Home |</a>
+			</div>
+			<div class="form-link-main">
+				<a class="nav-link" th:href="@{/booknow}"> Book Now |</a>
+			</div>
+			<div class="dropdown-link">
+				More
+				<div class="content-link">
+					<div class="form-link">
+						<a class="nav-link" th:href="@{/about}"> About </a>
+						<hr>
+						<a class="nav-link" th:href="@{/blog}"> Blog </a>
+						<hr>
+						<a class="nav-link" th:href="@{/room}"> Room </a>
+						<hr>
+						<a class="nav-link" th:href="@{/contact}"> Contact </a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

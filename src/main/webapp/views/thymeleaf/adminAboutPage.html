@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/about.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>About Us page</title>
+</head>
+<body>
+	<div th:replace="adminNavigation :: navigate"></div>
+	<form th:action="@{/updatePage}" method="post"
+						enctype="multipart/form-data" th:object="${page}">
+		<div class="columns" th:each="headerContent : ${listHeader}">
+			<div class="column is-full">
+				<figure class="image is-3by1"
+					th:each="image : ${headerContent.listUrlImage}">
+					<img th:src="${image}" class="img-active" alt="AboutImage"
+						style="width: 100%">
+				</figure>
+			</div>
+			<br>
+			<div class="heading_top flex1"
+				th:each="headerContent : ${listHeader}">
+				<div class="left">
+					<textarea th:text="${headerContent.subContent}" readonly="readonly"></textarea>
+				</div>
+				<div class="heading right">
+					<input th:value="${headerContent.title}" readonly="readonly">
+					<textarea th:text="${headerContent.listContent}"
+						readonly="readonly"></textarea>
+				</div>
+			</div>
+			<button class="editButton" type="button" style="width: 5%;height: 5%">🖊</button>
+		</div>
+	</form>
+	<section class="room top" id="room">
+		<div class="container">
+			<hr>
+			<div class="grid">
+				<div class="content grid" th:each="borderContent : ${listBorder}">
+					<form th:action="@{/updatePage}" method="post"
+						enctype="multipart/form-data" th:object="${page}">
+						<div class="boxUpdate">
+							<div class="img" th:each="image : ${borderContent.listUrlImage}">
+								<img th:src="${image}" alt="" class="fileImg"> <input
+									type="file" class="file" style="display: none">
+							</div>
+							<div class="text">
+								<input th:value="${borderContent.title}" class="inputUpdate"
+									readonly="readonly">
+								<textarea th:text="${borderContent.listContent}"
+									class="content-text" readonly="readonly"></textarea>
+								<button type="button" class="content-button">Read More</button>
+							</div>
+							<button class="editButton-border" type="button">🖊</button>
+						</div>
+					</form>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	<script th:src="@{/js/adminAbout.js}"></script>
+	<div th:replace="footer :: footer"></div>
+</body>
+</html>

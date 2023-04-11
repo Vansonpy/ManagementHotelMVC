@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Rooms Management</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/managerRooms.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+	<div id="body-pd">
+		<div th:replace="navigation :: navigate"></div>
+		<div th:text="${msg}"></div>
+		<hr>
+		<div class="container">
+			<th:block th:each="sale : ${listSales}">
+				<form th:object="${sale}" method="post"
+					th:action="@{/userCancelSales/(id=${sale.id})}">
+					<div class="card">
+						<!-- <img src="./.png" alt="" style="width: 100%"> -->
+						<!-- <img th:src="${room.urlImage}" alt="" style="width: 100%;"> -->
+						<div class="main">
+							<h2 th:text="${sale.roomName}"></h2>
+							<h5 th:text="'Type: ' + ${sale.type}"></h5>
+							CheckIn Date:
+							<p th:text="${sale.checkinDate}"></p>
+							CheckOut Date:
+							<p th:text="${sale.checkoutDate}"></p>
+							<p th:text="${sale.price} + '$'"></p>
+							<p>
+								<span class="link" style="padding: 6px 18px; margin: 2px 0; border: 1px solid"><a
+									th:href="@{/paySale/(id=${sale.id})}">Pay</a></span> <input
+									type="button" name="cancel" value="Cancel">
+							</p>
+						</div>
+					</div>
+				</form>
+			</th:block>
+
+			<script th:src="@{/js/roomUser.js}"></script>
+		</div>
+	</div>
+	<div style="display: flex; margin-left: 50vh">
+		<div th:each="countField, state : ${countFields}">
+			<form method="post"
+				th:action="@{/viewAllSalesRoomUser/(index=${state.index})}">
+				<input type="submit" th:value="${state.count}" name="submit">
+			</form>
+		</div>
+	</div>
+	<br>
+	<hr>
+</body>
+</html>

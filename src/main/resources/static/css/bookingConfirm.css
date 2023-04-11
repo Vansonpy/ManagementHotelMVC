@@ -1,0 +1,50 @@
+.container-field{
+background-color: whitesmoke;
+display: grid;
+
+}
+.form-field {
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 20px; /* Khoảng cách giữa các cột */
+}
+.button {
+background-color:#f59e42;
+width: 100px;
+}
+.checkAvailability{
+	margin: 5vh 0;
+}
+.form{
+	display: flex;
+	padding: 10px 20px;
+	justify-content: space-between;
+}
+
+.field-label{
+	margin: 0 2vh 0 5vh;
+	text-align: left;
+}
+.form-top-left,.form-center-left,.form-center-right,.form-top-right{
+	flex-basis: 45%;
+	width: 100%;
+}
+.field-body,.inputcheck{
+	width: 100%;
+}
+.inputcheck{
+	height: 30px;
+	text-align: center;
+}
+
+.form-bottom-left{
+	flex-basis: 45%;
+	width: 100%;
+}
+.form-bottom-center {
+	flex-basis: 30%;
+	width: 100%;
+}
+.form-bottom-right{
+	flex-basis: 5%;
+	width: 100%;
+}

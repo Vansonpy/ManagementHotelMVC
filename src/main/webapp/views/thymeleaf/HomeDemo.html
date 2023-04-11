@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>Home Page</title>
+</head>
+<body>
+
+	<div th:replace="adminNavigation :: navigate"></div>
+
+	<!-- Inner -->
+	<div class="header">
+		<div class="slider">
+			<i class="fa fa-angle-left slider-prev"><button class="btnSlide"><</button></i>
+			<i class="fa fa-angle-right slider-next"><button class="btnSlide">></button></i>
+			<ul class="slider-dots">
+				<li class="slider-dot-item active" data-index="0"></li>
+				<li class="slider-dot-item" data-index="1"></li>
+				<li class="slider-dot-item" data-index="2"></li>
+			</ul>
+			<div class="slider-wrapper">
+				<form action="">
+					<div class="slider-main">
+						<div class="slider-item">
+							<div class="img-header">
+								<header> Pull file Image</header>
+								<button>Select file</button>
+								<input type="file" hidden="hidden" class="inputImage">
+							</div>
+							<div class="content-header-box">
+								<div class="title-header">
+									<input type="text" placeholder="Enter title"
+										class="title-header-input">
+								</div>
+								<div class="content-header">
+									<textarea placeholder="Enter content"
+										class="content-header-input"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="bntAction">
+						<button class="bntAdd" type="button">+</button>
+						<button class="bntEdit" type="button">🖊</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+	<hr style="margin-top: 0;">
+	<div class="checkAvailability">
+		<h3 style="text-align: center; margin-bottom: 5vh">Check
+			Availability</h3>
+
+		<form th:action="@{/FormCheckRoom}" method="get"
+			style="text-align: center;">
+			<div class="form">
+				<div class="form-top-left">
+					<div class="field-label">
+						<label class="label">From</label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkin Date"
+							name="checkinDate" id="checkinDate" pattern="yyyy-MM-dd">
+					</div>
+				</div>
+				<div class="form-top-right">
+					<div class="field-label">
+						<label class="label">To </label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkout Date"
+							name="checkoutDate" id="checkoutDate" pattern="yyyy-MM-dd">
+
+					</div>
+				</div>
+			</div>
+			<div class="form">
+				<div class="form-bottom-left">
+					<div class="field-label">
+						<label class="label">Price</label>
+					</div>
+					<div class="field-body">
+						<div class="control">
+							<select name="price" id="price" class="inputcheck">
+								<option value="500">Under 500$</option>
+								<option value="750">Under 750$</option>
+								<option value="1000">Under 1000$</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-bottom-center">
+					<div class="field-label">
+						<label class="label">Room</label>
+					</div>
+					<div class="field-body">
+						<select name="type" id="type" class="inputcheck">
+							<option value="Vip">Vip</option>
+							<option value="Normal">Normal</option>
+							<option value="Homestay">Homestay</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-bottom-right">
+					<div class="field-label">
+						<label class="label"></label>
+					</div>
+					<div class="field-body">
+						<input type="submit" value="Check" name="check" class="inputcheck">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<form action="">
+		<div class="border">
+
+			<div class="left-border">
+				<div class="img-boder">
+					<div class="image1">
+						<header> Pull file Image</header>
+						<button>Select file</button>
+						<input type="file" hidden="hidden" class="inputImage">
+					</div>
+					<div class="image2">
+						<header> Pull file Image</header>
+						<button>Select file</button>
+						<input type="file" hidden="hidden" class="inputImage">
+					</div>
+				</div>
+			</div>
+			<div class="right-border">
+				<div class="content-boder-box">
+					<div class="subContent-border">
+						<input type="text" placeholder="Enter sub content"
+							class="subContent-border-input">
+					</div>
+					<div class="title-border">
+						<input type="text" placeholder="Enter title"
+							class="title-border-input">
+					</div>
+					<div class="content-border">
+						<textarea placeholder="Enter content" class="content-border-input"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="bntAction">
+				<button class="bntEdit" type="button">🖊</button>
+			</div>
+
+		</div>
+	</form>
+	<div th:replace="footer :: footer"></div>
+	<script th:src="@{/js/home.js}"></script>
+</body>
+</html>

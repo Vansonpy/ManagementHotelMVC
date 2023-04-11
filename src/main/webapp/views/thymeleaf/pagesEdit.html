@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Pages Edit</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+	rel="stylesheet" />
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/pagesEdit.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+
+ <div id="body-pd">
+	<div th:replace="navigation :: navigate"></div>
+	<div th:text="${msg}"></div>
+	<hr>
+	<div class="container">
+		<h1>Edit Pages</h1>
+	<hr>
+	<p th:object="${msgFaile}" style="color: red" th:text=${msgFaile}>
+	<p th:object="${msgSuccess}" style="color: green" th:text=${msgSuccess}>
+	<form th:action="@{/editPages}" th:object="${page}" method="post">
+		<input type="text" th:value="${page.id}" name="id" id="id"
+			style="display: none"><br>
+		
+		<div class="th-header">Page Name <span style="color: red">*</span></div>
+		<div class="td-boder">
+			<input type="text" th:value="${page.pageName}" name="pageName"
+				id="pageName" disabled="disabled">
+		</div>
+
+		<div class="th-header">Title <span style="color: red">*</span></div>
+		<div class="td-boder">
+			<input type="text" name="title" id="title"
+			th:value="${page != null} ? ${page.title} : ''" required autocomplete="off">
+			<small></small>
+		</div>
+
+		<div class="th-header">Sub Content</div>
+		<div class="td-boder">
+			<input type="text" th:value="${page.subContent}" name="subContent"
+				id="subContent">
+				<small></small>
+		</div>
+
+		<div class="th-header">Content <span style="color: red">*</span></div>
+		<div class="td-boder">
+			<textarea name="content" id="content" th:text="${page != null} ? ${page.content} : ''" required autocomplete="off" ></textarea>
+			<small></small>
+		</div>
+
+		<div class="th-header">Image</div>
+		<div class="td-boder">
+			<input type="text" th:value="${page.listImg[0]}" name="listImg"
+				id="listImg">
+		</div>
+		<div class="submit-btn">
+			<input type="submit" value="Save" name="save">
+		</div>
+	</form>
+
+	</div>
+	</div>
+	 	<script th:src="@{/js/pagesEdit.js}"></script> 
+</body>
+</html>

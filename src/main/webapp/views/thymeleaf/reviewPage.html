@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Review | Fsoft hotel</title>
+</head>
+<body>
+<div th:replace="navigation :: navigate"></div>
+	<ul>
+		<th:block th:each="row : ${review}">
+			<li th:utext="${row.userPages.userName}">..</li>
+			<li th:utext="${row.content}">..</li>
+		</th:block>
+	</ul>
+	<div th:replace="footer :: footer"></div>
+</body>
+</html>

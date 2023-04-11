@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bookingConfirm.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
+<title>Booking Confirm Page</title>
+</head>
+<body>
+	<div th:replace="navigation :: navigate"></div>
+	<div class="container-field">
+
+		<div class="checkAvailability">
+			<h3 style="text-align: center; margin-bottom: 5vh">Booking Now</h3>
+			<p th:text="${msgFail}" style="text-align: center; color: red"></p>
+			<form th:action="@{/FormBookRoom}" method="post"
+				style="text-align: center;">
+				<div class="form">
+					<div class="form-top-left">
+						<div class="field-label">
+							<label class="label">From</label>
+						</div>
+						<div class="field-body">
+							<input class="inputcheck" type="date" placeholder="checkin Date"
+								name="checkinDate" id="checkinDate" pattern="yyyy-MM-dd">
+						</div>
+					</div>
+					<div class="form-top-right">
+						<div class="field-label">
+							<label class="label">To </label>
+						</div>
+						<div class="field-body">
+							<input class="inputcheck" type="date" placeholder="checkout Date"
+								name="checkoutDate" id="checkoutDate" pattern="yyyy-MM-dd">
+
+						</div>
+					</div>
+				</div>
+				<div class="form">
+				<div class="form-center-left">
+						<div class="field-label">
+							<label class="label">Phone </label>
+						</div>
+						<div class="field-body">
+							<input class="inputcheck" type="text" name="phone" id="phone"
+								placeholder="090. xxx.xxx">
+						</div>
+					</div>
+					<div class="form-center-right">
+						<div class="field-label">
+							<label class="label">Email </label>
+						</div>
+						<div class="field-body">
+							<input class="inputcheck" type="text" name="email" id="email"
+								placeholder="Email@gmail.com">
+						</div>
+					</div>
+				</div>
+				<div class="form">
+					<div class="form-bottom-left">
+						<div class="field-label">
+							<label class="label">Price</label>
+						</div>
+						<div class="field-body">
+							<div class="control">
+								<select class="inputcheck" name="price" id="price">
+									<option value="500">Under 500$</option>
+									<option value="750">Under 750$</option>
+									<option value="1000">Under 1000$</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="form-bottom-center">
+						<div class="field-label">
+							<label class="label">Room</label>
+						</div>
+						<div class="field-body">
+							<select class="inputcheck" name="type" id="type">
+								<option value="Vip">Vip</option>
+								<option value="Normal">Normal</option>
+								<option value="Homestay">Homestay</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-bottom-right">
+						<div class="field-label">
+							<label class="label"></label>
+						</div>
+						<div class="field-body">
+							<input type="submit" value="Book" name="book" class="inputcheck">
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div th:replace="footer :: footer"></div>
+	<!-- <script th:src="@{/js/formcheck.js}"></script> -->
+</body>
+</html>

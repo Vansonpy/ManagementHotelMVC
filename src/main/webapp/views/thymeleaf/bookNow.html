@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/bookNow.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+</style>
+<title>BooKing Page</title>
+</head>
+<body>
+	<div th:replace="navigation :: navigate"></div>
+	<div class="container-field">
+		<div class="checkAvailability">
+			<h3 style="text-align: center; margin-bottom: 5vh">Booking Now</h3>
+			<p th:text="${msgFail}" style="text-align: center; color: red"></p>
+			<div class="form">
+				<div class="form-top-left">
+					<div class="field-label">
+						<label class="label">From</label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkin Date"
+							name="checkinDateInput" id="checkinDateInput"
+							pattern="yyyy-MM-dd">
+					</div>
+				</div>
+				<div class="form-top-center">
+					<div class="field-label">
+						<label class="label">To </label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkout Date"
+							name="checkoutDateInput" id="checkoutDateInput"
+							pattern="yyyy-MM-dd">
+
+					</div>
+				</div>
+				<div class="form-top-right">
+					<div class="field-label">
+						<label class="label">Email </label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="text" name="emailInput"
+							id="emailInput" placeholder="Email@gmail.com">
+
+					</div>
+				</div>
+			</div>
+			<div class="form">
+				<div class="form-bottom-left">
+					<div class="field-label">
+						<label class="label">Price</label>
+					</div>
+					<div class="field-body">
+						<div class="condivol">
+							<select class="inputcheck" name="priceInput" id="priceInput">
+								<option value="500">Under 500$</option>
+								<option value="750">Under 750$</option>
+								<option value="1000">Under 1000$</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-bottom-center">
+					<div class="field-label">
+						<label class="label">Room</label>
+					</div>
+					<div class="field-body">
+						<select class="inputcheck" name="typeInput" id="typeInput">
+							<option value="Vip">Vip</option>
+							<option value="Normal">Normal</option>
+							<option value="Homestay">Homestay</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-bottom-right">
+					<div class="field-label">
+						<label class="label"></label>
+					</div>
+					<div class="field-body">
+						<input type="button" value="Book" name="book" class="inputcheck">
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<hr>
+	<div class="formBook" style="display: none">
+		<h3 style="text-align: center; margin-bottom: 5vh">Booking
+			Confirm</h3>
+		<form th:action="@{/FormBookRoom}" method="post"
+			style="text-align: center;">
+			<div class="form-confirm">
+			
+				<div class="field-confirm">
+					<div>Check-in Date</div>
+					<input id="checkinDate" name="checkinDate" class="inputConfirm"
+						placeholder="20/02/2023">
+				</div>
+				<div class="field-confirm">
+					<div>Check-out Date</div>
+					<input name="checkoutDate" id="checkoutDate"
+						class="inputConfirm" placeholder="22/02/2023">
+				</div>
+				<div class="field-confirm">
+					<div>Email</div>
+					<input type="email" name="email" id="email" class="inputConfirm"
+						placeholder="Email@gmail.com">
+				</div>
+				<div class="field-confirm">
+					<div>Price Room</div>
+					<input id="price" name="price" class="inputConfirm"
+						placeholder="500$">
+				</div>
+				<div class="field-confirm">
+					<div>Room type</div>
+					<input id="type" name="type" class="inputConfirm" placeholder="Vip">
+				</div>
+				
+			</div>
+			<div class="signature">
+				<input type="submit" value="BookNow" name="bookNow"
+					style="margin: 5vh">
+			</div>
+		</form>
+	</div>
+	<div th:replace="footer :: footer"></div>
+	<script th:src="@{/js/bookNow.js}"></script>
+</body>
+</html>

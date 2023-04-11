@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Manager List Pages</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/listPages.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+
+	<div th:replace="adminNavigation :: navigate"></div>
+	<div th:text="${msg}"></div>
+	<hr>
+	<div class="container">
+		<h1>List Pages</h1>
+	<hr>
+
+	<div style="margin: 10px;" class="a-btn">
+		<a th:href="@{/addPages}">Add +</a>
+	</div>
+	<div class="tr-header">
+		<div class="th-header">Page Name</div>
+		<div class="th-header">Title</div>
+		<div class="th-header">Content</div>
+		<div class="th-header">Sub Content</div>
+		<div class="th-header">Image</div>
+		<div class="th-header">Action</div>
+	</div>
+	
+	</div>
+	
+	<script th:src="@{/js/sidebar.js}"></script>
+
+</body>
+</html>

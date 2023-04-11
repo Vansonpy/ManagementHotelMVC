@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/managerInfo.css}">
+<title>Management Info</title>
+<style>
+td {
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+
+
+<body>
+
+	<div th:replace="navigation :: navigate"></div>
+	<div th:each="row,rowStat : ${userInfo}" style="text-align: center;">
+		<form action="" method="post" name="frm-addEmp">
+			<div class="container">
+				<div class="form-group">
+					<label for="firstName">Full Name <span style="color: red;">*</span>:
+					</label> <input type="text" class="form-control" id="fullName"
+						name="fullName" th:value="${row.getFullName()}"
+						disabled="disabled"> <small></small>
+				</div>
+				<div class="form-group">
+					<label for="phoneNumber">Phone Number <span
+						style="color: red;">*</span>:
+					</label><input type="text" class="form-control" id="phone"
+						placeholder="Enter phone" name="phone"
+						oninput="showSuccess(this)" th:value="${row.getPhone()}" disabled="disabled"> <small></small>
+				</div>
+				<div class="form-group">
+					<label for="gender">Gender <span style="color: red;">*</span>:
+					</label>
+					<label class="form-check-label"> <input
+								type="radio" class="form-check-input" name="gender" value="1"
+								checked disabled="disabled">Male
+							</label> <label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="gender" value="0"
+								${row.getGender() ==0 ? 'checked' : '' } disabled="disabled">Female
+							</label>
+				</div>
+				<div class="form-group">
+					<label for="accountName">USERNAME: <span
+						style="color: red;">*</span>:
+					</label>  <input type="text" class="form-control" id="userName"
+						placeholder="Enter accountName" name="userName"
+						th:value="${row.getUserName}" disabled="disabled"> <small></small>
+				</div>
+				<div class="form-group">
+					<label for="email">Email <span style="color: red;">*</span>:
+					</label> <input type="text" class="form-control" id="email"
+						placeholder="Enter email" name="email" oninput="showSuccess(this)"
+						th:value="${row.getEmail()}" disabled="disabled"> <small></small>
+				</div>
+				<div>
+					<input type="button" name="edit" value="Edit">
+				</div>
+				</div>
+		</form>
+	</div>
+</body>
+
+</html>

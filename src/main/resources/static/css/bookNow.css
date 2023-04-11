@@ -1,0 +1,65 @@
+.container-field{
+background-color: whitesmoke;
+display: grid;
+
+}
+.form-field {
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 20px; /* Khoảng cách giữa các cột */
+}
+.button {
+background-color:#f59e42;
+width: 100px;
+}
+.checkAvailability{
+	margin: 5vh 0;
+}
+.form,.form-top-left,.form-top-right,.form-top-center,.form-bottom-left,.form-bottom-right,.form-bottom-center{
+	display: flex;
+}
+.form{
+	padding: 20px 20px;
+	margin-bottom: 5vh;
+}
+.field-label{
+	margin: 0 2vh 0 5vh;
+}
+.form-top-left,.form-top-center,.form-top-right{
+	flex-basis: 33%;
+	width: 100%;
+}
+.field-body,.inputcheck{
+	width: 100%;
+}
+.inputcheck{
+	height: 30px;
+	text-align: center;
+}
+.form-bottom-right{
+	flex-basis: 9%;
+	width: 100%;
+}
+.form-bottom-left,.form-bottom-center{
+	flex-basis: 45%;
+	width: 100%;
+}
+ 
+.field-confirm{
+	display: flex;
+	justify-content: space-between;
+	padding-left: 2vh;
+}
+
+.inputConfirm{
+	border: 0;
+	background: none;
+	padding-left: 3vh;
+}
+.formBook{
+	border: 1px solid;
+	width: 70vh;
+	margin: 5vh auto;
+	padding: 5vh;
+	border-radius: 5px;
+	background-color: white;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Management Booking</title>
+
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/managerRooms.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+	<div id="body-pd">
+
+		<div th:replace="adminNavigation :: navigate"></div>
+		<div th:text="${msg}"></div>
+		<hr>
+		<div class="container">
+			<th:block th:each="room : ${listRooms}">
+				<form th:object="${room}" method="post"
+					th:action="@{/editRooms/(id=${room.id})}">
+					<div class="card">
+						<img th:src="${room.urlImage}" alt="" style="width: 100%;">
+						<div class="main">
+							<h2 th:text="${room.roomName}"></h2>
+							<h4 th:text="'Type: ' + ${room.type}"></h4>
+							<p th:text="${room.price} + '$'"></p>
+							<p>
+								<span class="link"
+									style="padding: 6px 6px; margin: 2px 0; border: 1px solid"><a
+									th:href="@{/updateRoom/(id=${room.id})}">Booking</a></span> <span class="link"
+									style="padding: 6px 6px; margin: 2px 0; border: 1px solid"><a
+									th:href="@{/updateRoom/(id=${room.id})}">Pay</a></span>
+							</p>
+						</div>
+					</div>
+				</form>
+			</th:block>
+			<script th:src="@{/js/quanlyphong.js}"></script>
+		</div>
+		<div style="display: flex; margin-left: 50vh">
+			<div th:each="countField, state : ${countFields}">
+				<form method="post"
+					th:action="@{/viewAllRoomsByButton/(index=${state.index})}">
+					<input type="submit" th:value="${state.count}" name="submit">
+				</form>
+			</div>
+
+			</th:block>
+			<script th:src="@{/js/quanlyphong.js}"></script>
+		</div>
+	</div>
+
+</body>
+</html>

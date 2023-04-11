@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Invoice</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/payPage.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+	<div th:replace="navigation :: navigate"></div>
+	<br>
+		<p th:text="${msg}"></p>
+	<div class="container">	
+		<div class="hotel-info">
+			<div class="hotel-info--header">
+			</div>
+			<h1>Fsoft Hotel, Inc</h1>
+			<p>Phone: 0912121212</p>
+			<p>Address: F-town 1</p>
+		</div>
+		<form th:object="${sale}" method="post"
+					th:action="@{/paySales/(id=${sale.id})}">
+		<table >
+			<tr class="line-content">
+				<td>Payment Method</td>
+				<td>Money</td>
+			</tr>
+
+		</table>
+		<table>
+			<tr>
+				<td>Price Room</td>
+				<td th:text="${sale.price}" class="totalPrice" style="display: none"></td>
+				<td  class="totalPrice"></td>
+			</tr>
+		</table>
+		<table>
+			<tr class="line-content">
+				<td>Item</td>
+				<td>Check</td>
+			</tr>
+
+			<tr>
+				<td>Room Number</td>
+				<td th:text="${sale.roomName}"></td>
+			</tr>
+			<tr>
+				<td>Room type</td>
+				<td th:text="${sale.type}"></td>
+			</tr>
+				<tr>
+					<td>Check-in Date</td>
+					<td th:text="${sale.checkinDate}" class="totalPrice"></td>
+				</tr>
+				<tr>
+					<td>Check-out Date</td>
+					<td th:text="${sale.checkoutDate}" class="totalPrice"></td>
+				</tr>
+			</th:block>
+		</table>
+		<div class="signature">
+			<input type="submit" value="Pay" name="Pay">
+		</div>
+		</form>
+	</div>
+	<br>
+	<br>
+	<script th:src="@{/js/payPage.js}"></script>
+</body>
+</html>

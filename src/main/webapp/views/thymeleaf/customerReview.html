@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Review pages</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/listSalePage.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+	<div id="body-pd">
+		<div th:replace="adminNavigation :: navigate"></div>
+		<div th:text="${msg}"></div>
+		<hr>
+		<div class="container">
+			<h1>Customer Review</h1>
+			<hr>
+			
+			<div class="tr-header">
+				<div class="th-header" style="text-align: center;">Customer Name</div>
+				<div class="th-header" style="text-align: center;">Phone</div>
+				<div class="th-header" style="text-align: center;">Email</div>
+				<div class="th-header" style="text-align: center;">Subject</div>
+				<div class="th-header" style="text-align: center;">Message</div>
+			</div>
+			<div class="table" th:each="contact : ${listContacts}" style="margin: 0">
+					<div class="tr-boder">
+						<div class="td-boder">
+							<input type="text" th:value="${contact.userName}" name="userName"
+								readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${contact.phone}" name="phone" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${contact.email}" name="email" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${contact.subject}"
+								name="subject" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${contact.message}"
+								name="message" readonly>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style="display: flex;margin: 5vh 0 0 5vh">
+		<div th:each="countField, state : ${countFields}">
+			<form method="post"
+				th:action="@{/viewAllContactByButton/(index=${state.index})}">
+				<input type="submit" th:value="${state.count}" name="submit">
+			</form>
+		</div>
+</div>
+<br><hr>
+	<script th:src="@{/js/listSalePage.js}"></script>
+</body>
+</html>

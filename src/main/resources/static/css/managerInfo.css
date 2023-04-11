@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.container{
+	margin: 0;
+	width: 100%;
+}
+.boder-em{
+	display: flex;
+}
+.boder-left-em{
+	flex-basis: 20%;
+}
+
+.boder-right-em{
+	flex-basis: 80%;
+	margin: 0 20px;
+	
+}
+.error{
+	border:red;
+	color:red;
+}
+.form-group{
+	margin-bottom: 10px;
+}
+.btn-primary{
+	width: 75px;
+	border-radius: 5px;
+	border:0px;
+	margin-bottom: 30px;
+	height: 35px;
+}
+#btn-back{
+	background-color: #0099FF;
+}
+#btn-reset{
+	background-color: #FF6633;
+}
+
+#btn-addEmp{
+	background-color: #009900;
+}
+label {
+	font-weight: bold;
+	width: 50vh;
+	text-align: center;
+}
+.form-check-input{
+	margin-left: 10px;
+}
+.form-group{
+	display: flex;
+}
+form{
+	margin-top: 5vh;
+}

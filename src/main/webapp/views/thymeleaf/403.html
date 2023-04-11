@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<h2 style="color: red" th:text="${message} +'!!!'"></h2>
+<h3>
+    Please click <a th:href="@{${pageContext.request.contextPath}/login}">here</a> to login with another account!
+</h3>
+</body>
+</html>

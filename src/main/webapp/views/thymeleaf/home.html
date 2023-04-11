@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<!-- <link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+	rel="stylesheet" /> -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/home-info.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>Home Page</title>
+</head>
+<body>
+
+	<div th:replace="navigation :: navigate"></div>
+
+	<!-- Inner -->
+	<div class="slider">
+		<div class="slider-wrapper">
+			<div th:each="headerContent,state : ${listHeader}"
+				class="slider-main">
+				<div th:each="image : ${headerContent.listUrlImage}"
+					class="slider-item">
+					<img th:src="${image}" class="img-active" alt="homeImage" />
+					<div class="content-caption">
+						<h5 th:text="${headerContent.title}"></h5>
+						<p th:text="${headerContent.listContent}"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="image-button button-left" value="-1">&#10094;</button>
+		<button class="image-button button-right" value="1">&#10095;</button>
+		<div class="slider-list-bnt">
+			<div th:each="headerContent,state : ${listHeader}"
+				class="slider-div-bnt">
+				<button class="slider-bnt" th:value="${state.count}" type="button"></button>
+			</div>
+		</div>
+	</div>
+	<hr style="margin-top: 0;">
+	<div class="checkAvailability">
+		<h3 style="text-align: center; margin-bottom: 5vh">Check
+			Availability</h3>
+
+		<form th:action="@{/FormCheckRoom}" method="get"
+			style="text-align: center;">
+			<div class="form">
+				<div class="form-top-left">
+					<div class="field-label">
+						<label class="label">From</label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkin Date"
+							name="checkinDate" id="checkinDate" pattern="yyyy-MM-dd">
+					</div>
+				</div>
+				<div class="form-top-right">
+					<div class="field-label">
+						<label class="label">To </label>
+					</div>
+					<div class="field-body">
+						<input class="inputcheck" type="date" placeholder="checkout Date"
+							name="checkoutDate" id="checkoutDate" pattern="yyyy-MM-dd">
+
+					</div>
+				</div>
+			</div>
+			<div class="form">
+				<div class="form-bottom-left">
+					<div class="field-label">
+						<label class="label">Price</label>
+					</div>
+					<div class="field-body">
+						<div class="control">
+							<select name="price" id="price" class="inputcheck">
+								<option value="500">Under 500$</option>
+								<option value="750">Under 750$</option>
+								<option value="1000">Under 1000$</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="form-bottom-center">
+					<div class="field-label">
+						<label class="label">Room</label>
+					</div>
+					<div class="field-body">
+						<select name="type" id="type" class="inputcheck">
+							<option value="Vip">Vip</option>
+							<option value="Normal">Normal</option>
+							<option value="Homestay">Homestay</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-bottom-right">
+					<div class="field-label">
+						<label class="label"></label>
+					</div>
+					<div class="field-body">
+						<input type="submit" value="Check" name="check" class="inputcheck">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<div class="about top" id="about">
+		<div class="container flex" th:each="borderContent : ${listBorder}">
+			<div class="left">
+				<div class="img">
+					<img th:src="${borderContent.listUrlImage.get(0)}" alt=""
+						class="image1"> <img
+						th:src="${borderContent.listUrlImage.get(1)}" alt=""
+						class="image2">
+				</div>
+			</div>
+			<div class="right">
+				<div class="text">
+					<input th:value="${borderContent.subContent}" readonly="readonly"
+						class="subContent"> <input
+						th:value="${borderContent.title}" readonly="readonly"
+						class="title">
+					<textarea th:text="${borderContent.listContent}"
+						class="content-text" readonly="readonly"></textarea>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div th:replace="footer :: footer"></div>
+	<script th:src="@{/js/home.js}"></script>
+</body>
+</html>

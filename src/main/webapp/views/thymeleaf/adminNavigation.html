@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<div class="navbar" th:fragment="navigate">
+
+		<div class="navbar-left">
+
+			<div class="form-link-main">
+				<a class="nav-link" th:href="@{/managementbooking}">Management Booking |</a>
+			</div>
+			<div class="dropdown-link">
+				Pages Service |
+				<div class="content-link">
+					<div class="form-link">
+						<a class="nav-link" th:href="@{/homeAdmin}">Home </a> 
+						<hr>
+						<a class="nav-link" th:href="@{/aboutAdmin}">About</a>
+						<hr>
+						<a class="nav-link" th:href="@{/blogAdmin}">Blog </a>
+					</div>
+				</div>
+			</div>
+<div class="dropdown-link">
+				Info |
+
+				<div class="content-link">
+					<div class="form-link">
+						<a class="nav-link" th:href="@{/viewListUsers}"
+							style="height: 25px">Member Info </a>
+						<hr>
+						<a class="nav-link" th:href="@{/viewUser}" style="height: 25px">My
+							Info </a>
+					</div>
+				</div>
+			</div>
+			<div class="dropdown-link">
+				Management
+
+				<div class="content-link">
+					<div class="form-link">
+						<a class="nav-link" th:href="@{/viewAllRooms}"
+							style="height: 25px"> Rooms Management </a>
+						<hr>
+						<a class="nav-link" th:href="@{/viewAllSales}"
+							style="height: 25px">Sales Management </a>
+						<hr>
+						<a class="nav-link" th:href="@{/customerReview}"
+							style="height: 25px">Customer Review </a>
+						<hr>
+						<a class="nav-link" th:href="@{/addroom}" style="height: 25px">Add
+							Room</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="navbar-right">
+
+			<div class="navbar-item" th:object="${#httpServletRequest.getSession().getAttribute('userSession')}">
+				<strong>Welcome: <span th:text="*{userName}">N/A</span></strong> |<a
+					th:href="@{/signout}" style="margin: 0;">Logout <img
+					src="https://cdn-icons-png.flaticon.com/512/3889/3889524.png"
+					style="width: 15px; height: 15px;"></a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

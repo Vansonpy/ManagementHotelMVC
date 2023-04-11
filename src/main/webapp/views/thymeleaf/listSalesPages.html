@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Manager List Sales</title>
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/listSalePage.css}" />
+<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+</head>
+<body>
+	<div id="body-pd">
+		<div th:replace="adminNavigation :: navigate"></div>
+		<div th:text="${msg}"></div>
+		<hr>
+		<div class="container">
+			<h1>List Sales</h1>
+			<hr>
+			<form method="post" 
+				th:action="@{/viewAllSales/status}">
+				<div style="margin-bottom: 10px;">
+					<select
+						class="form-control" name="status" id="status"
+						style="width: 100px; height: 30px; display: inline; padding: 0 10px;">
+						<option value="3">Status...</option>
+						<option value="3">All</option>
+						<option value="0">Processing</option>
+						<option value="1">Complete</option>
+						<option value="2">Cancel</option>
+					</select> <input type="submit" value="Search" name="search"
+						style="width: 80px; height: 30px; padding: 0 15px;">
+				</div>
+			</form>
+			<div class="tr-header">
+				<div class="th-header" style="text-align: center;">Room Name</div>
+				<div class="th-header" style="text-align: center;">Type</div>
+				<div class="th-header" style="text-align: center;">Price($)</div>
+				<div class="th-header" style="text-align: center;">CheckIn
+					Date</div>
+				<div class="th-header" style="text-align: center;">CheckOut
+					Date</div>
+				<div class="th-header" style="text-align: center;">Status</div>
+				<div class="th-header" style="text-align: center;">UserName</div>
+				<div class="th-header" style="text-align: center;">Price
+					Sale($)</div>
+				<div class="th-header" style="text-align: center;">Action</div>
+			</div>
+			<div class="table" th:each="sales : ${sales}" style="margin: 0">
+				<form th:object="${sales}" method="post"
+					th:action="@{/cancelSales/(id=${sales.id})}">
+					<div class="tr-boder">
+						<div class="td-boder">
+							<input type="text" th:value="${sales.roomName}" name="roomName"
+								readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.type}" name="type" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.price}" name="price" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.checkinDate}"
+								name="checkinDate" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.checkoutDate}"
+								name="checkoutDate" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.status}" name="statuses"
+								style="display: none"> <input type="text"
+								name="buttonStatus" readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" th:value="${sales.userName}" name="userName"
+								readonly>
+						</div>
+						<div class="td-boder">
+							<input type="text" name="salePrice" id="salePrice" readonly>
+						</div>
+						<div class="td-boder">
+							<span class="link" style="padding: 2px 15px; margin: 2px 0;"><a
+								th:href="@{/paySale/(id=${sales.id})}">Pay</a></span> <input
+								type="button" name="cancel" value="Cancle" style="margin: 0;">
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="tr-boder">
+				<div class="td-boder"></div>
+				<div class="td-boder"></div>
+				<div class="td-boder"></div>
+				<div class="td-boder" style="text-align: center;">Total
+					Price($)</div>
+				<div class="td-boder"></div>
+				<div class="td-boder"></div>
+				<div class="td-boder"></div>
+				<div class="td-boder">
+					<input type="text" value="0" readonly name="totalPrice">
+				</div>
+				<div class="td-boder"></div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div style="display: flex;margin: 5vh 0 0 5vh">
+		<div th:each="countField, state : ${countFields}">
+			<form method="post"
+				th:action="@{/viewAllSalesByButton/(index=${state.index})}">
+				<input type="submit" th:value="${state.count}" name="submit">
+			</form>
+		</div>
+</div>
+<br><hr>
+	<script th:src="@{/js/listSalePage.js}"></script>
+</body>
+</html>

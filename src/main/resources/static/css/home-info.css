@@ -1,0 +1,302 @@
+.flex {
+	display: flex;
+}
+
+.left, .right {
+	width: 50%;
+}
+
+.about {
+	margin-bottom: 50px;
+}
+
+.about .img {
+	position: relative;
+}
+
+.about .image1 {
+	width: 310px;
+	height: 450px;
+}
+
+.about .image2 {
+	width: 325px;
+	height: 220px;
+	position: absolute;
+	bottom: 5px;
+	z-index: 2;
+	right: 30%;
+}
+
+.text {
+	display: flex;
+	flex-flow: column;
+}
+
+textarea, input:focus {
+	outline: none;
+}
+
+.text .subContent, textarea, .title {
+	border: 0;
+	background: none;
+	width: 100%;
+}
+
+.text .subContent {
+	font-weight: 400;
+	letter-spacing: 2px;
+	padding-top: 20px;
+	color: #5f5f5f;
+}
+
+.title {
+	font-size: 30px;
+	font-weight: 400;
+	color: white;
+	text-align: center;
+}
+
+.text .title {
+	font-size: 30px;
+	font-weight: 400;
+	margin: 20px 0 40px 0;
+	color: #222;
+}
+
+textarea {
+	line-height: 25px;
+	color: #5f5f5f;
+}
+
+.content-text {
+	color: white;
+	text-align: center;
+}
+
+.text textarea {
+	margin-bottom: 20px;
+	line-height: 25px;
+	color: #5f5f5f;
+	margin: 0 0 20px 50px;
+	height: 50vh;
+}
+
+.checkAvailability {
+	margin: 5vh 0;
+}
+
+.form, .form-top-left, .form-top-right, .form-bottom-left,
+	.form-bottom-right, .form-bottom-center {
+	display: flex;
+}
+
+.form {
+	padding: 20px 20px;
+	margin-bottom: 5vh;
+}
+
+.field-label {
+	margin: 0 2vh 0 5vh;
+}
+
+.form-top-left, .form-top-right {
+	flex-basis: 50%;
+	width: 100%;
+}
+
+.field-body, .inputcheck {
+	width: 100%;
+}
+
+.inputcheck {
+	height: 30px;
+	text-align: center;
+}
+
+.form-bottom-right {
+	flex-basis: 5%;
+	width: 100%;
+}
+
+.form-bottom-left {
+	flex-basis: 50%;
+	width: 100%;
+}
+
+.form-bottom-center {
+	flex-basis: 45%;
+	width: 100%;
+}
+
+.btnSlide {
+	border: 0;
+	background: none;
+	font-size: 39px;
+}
+
+.slider-item {
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.slider-prev {
+	left: 0px;
+}
+
+.slider-next {
+	right: 0px;
+}
+
+.slider-next, .slider-prev {
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	/* height: 50%; */
+	transform: translateY(-50%);
+	border-radius: 100rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: rgb(109, 106, 106);
+	border-right-color: white;
+	cursor: pointer;
+	font-size: 20px;
+	box-shadow: rgb(100 100 111/ 20%) 0px 7px 20px;
+	z-index: 10;
+}
+
+.slider-bnt .active {
+	opacity: 1;
+}
+
+.slider {
+	overflow: hidden;
+	width: 96%;
+	margin: 0 auto;
+}
+
+.slider-wrapper {
+	display: flex;
+	margin: 0 auto;
+	position: relative;
+	transition: 2s;
+}
+
+.container {
+	position: relative;
+}
+
+.editButton, .editButton-top {
+	position: absolute;
+	right: 2%;
+	top: 2%;
+	border: 1px solid #ccc;
+	/* 	opacity: 0.9; */
+	width: 5%;
+	height: 5%;
+	border-radius: 5px;
+	z-index: 100;
+}
+
+.content-caption {
+	display: flex;
+	flex-flow: column;
+	position: absolute;
+	bottom: 3vh;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50%;
+	margin-bottom: 2vh;
+	color: white;
+}
+
+.slider-list-bnt {
+	display: flex;
+	position: absolute;
+	bottom: 2px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50%;
+	margin: 2vh 20%;
+	align-items: center;
+	/* justify-content: center */
+}
+
+.slider-div-bnt {
+	height: 80%;
+	width: 15px;
+	text-align: center;
+	margin: 2px;
+}
+
+.slider-bnt {
+	display: inline-block;
+	border-radius: 50%;
+	height: 14px;
+	width: 14px;
+	border: 1px solid #ccc;
+	background: none;
+}
+
+.slider-bnt:hover {
+	background: #fff;
+}
+
+.bntAction {
+	background: none;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 5vh;
+	height: 15vh;
+	z-index: 11;
+}
+
+.bntAdd, .bntEdit, .bntSave, .bntEdit-border {
+	font-size: 20px;
+	font-weight: bold;
+	background: none;
+	width: 5vh;
+	height: 5vh;
+	z-index: 11;
+}
+
+edit {
+	border: 1px solid #ccc;
+	background-color: white;
+}
+
+.button-left {
+	left: 1%;
+	font-size: 20px
+}
+
+.button-right {
+	right: 1%;
+	font-size: 20px
+}
+
+.image-button {
+	border: none;
+	display: inline-block;
+	padding: 10px;
+	height: 50px;
+	vertical-align: middle;
+	overflow: hidden;
+	color: #fff;
+	background: #000;
+	position: absolute;
+	top: calc(50% - 25px);
+	opacity: 0.5;
+}
+
+.image-button:hover {
+	color: #000;
+	background: #ccc;
+}
+
+.active{
+	background: white;
+}

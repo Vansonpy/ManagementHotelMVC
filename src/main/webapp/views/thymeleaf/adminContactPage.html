@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/navigate.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/contact.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}">
+
+	<style type="text/css">
+a {
+	text-decoration: none;
+	color: black;
+}
+
+button:hover, a:hover {
+	opacity: 0.7;
+}
+
+.icon-logout {
+	font-size: 25px;
+}
+</style>
+<title>Contact page</title>
+</head>
+<body>
+	<div th:replace="adminNavigation :: navigate"></div>
+	<!--
+	<div class="columns">
+		<div class="column is-full">
+			<figure class="image is-3by1">
+				<img
+					src="https://cdn.baogiaothong.vn/files/nam.pham/2018/05/07/164230-flc_8_zwdw.jpg">
+			</figure>
+		</div>
+	</div>
+	-->
+	<div class="container">
+        <div class="header">
+            <h1>Connect With Us</h1>
+            <p>We would love to respond to your queries and help you succeed. Feel free to get in touch with us.</p>
+
+        </div>
+        <div class="contact-box">
+            <div class="contact-left">
+                <h3>Send your request</h3>
+                <form th:action="@{/sendContact}" method="post">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="">Name</label>
+                            <input type="text" placeholder="John Doe" th:value="*{name}" name="name" id="name">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Phone</label>
+                            <input type="text" placeholder="(+84) 096 203 xx xx" th:value="*{phone}" name="phone" id="phone" >
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="">Email</label>
+                            <input type="email" placeholder="johndoe@gmail.com" th:value="*{email}" name="email" id="email">
+                        </div>
+                        <div class="input-group">
+                            <label for="">Subject</label>
+                            <input type="text" placeholder="Product Demo"th:value="*{subject}" name="subject" id="subject">
+                        </div>
+                    </div>
+
+                    <label for="">Message</label>
+                    <textarea rows="10" placeholder="Your Message" th:value="*{message}" name="message" id="message">
+
+                    </textarea>
+
+                    <button type="submit">SEND</button>
+
+                </form>
+
+            </div>
+            <div class="contact-right">
+                <h3>Reach us</h3>
+
+                <table>
+                    <tr>
+                        <td>Email</td>
+                        <td>contactus@fsofthotel.com</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>+84 (28) 3 736 2323<td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>F-Town Building, Lot T2, D1 Street, Saigon Hi-Tech Park, Tan Phu Ward, District 9, Ho Chi Minh City, Vietnam</td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+	<section class="map top">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15676.553673986311!2d106.68808435!3d10.8007089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1679861841047!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+	<div th:replace="footer :: footer"></div>
+</body>
+</html>
