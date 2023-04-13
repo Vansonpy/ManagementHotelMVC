@@ -61,7 +61,7 @@
 		<div class="navbar-right">
 
 			<div class="navbar-item" th:object="${#httpServletRequest.getSession().getAttribute('userSession')}">
-				<strong>Welcome: <span th:text="*{userName}">N/A</span></strong> |<a
+				<strong>Welcome: <!-- <span th:text="*{userName}">N/A</span> --></strong> |<a
 					th:href="@{/signout}" style="margin: 0;">Logout <img
 					src="https://cdn-icons-png.flaticon.com/512/3889/3889524.png"
 					style="width: 15px; height: 15px;"></a>
