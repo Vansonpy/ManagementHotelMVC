@@ -43,14 +43,20 @@ button:hover, a:hover {
 				<option value="Vip">Vip</option>
 				<option value="Normar">Normar</option>
 				<option value="Homstay">Homstay</option>
-			</select> <label for="Image">Image:</label> 
-			<div class=" drag-area" style="width: 100%;border: 1px solid #ccc; text-align: center;background: white; border-radius: 5px; margin-top:10px">
-				<header class="text-lg">Pull file upload</header>
-				<div>Or</div>
-				<button class="bntFile" type="button">Select file</button>
-				<input class="addroom" type="file"
+			</select> <label for="Image">Image:</label> <input class="addroom" type="file"
 				id="multipartFile" name="multipartFile"
-				style="background-color: white;" th:field="*{multipartFile}" hidden="hidden">
+				style="background-color: white;" th:field="*{multipartFile}"
+				hidden="">
+			<div class="drag-area">
+				<!-- <header class="text">Pull file upload</header>
+				<div class="text">Or</div>
+				<button class="bntFile" type="button">Select file</button> -->
+				<div class="file">
+					<img
+						src="https://cdn3.iconfinder.com/data/icons/file-management-system-outline-1/32/file_manager_icon_set-22-512.png"
+						alt="" width="50%" height="50%">
+						<p><button class="bntFile" type="button">Choose file</button> or Drag</p>
+				</div>
 			</div>
 			<button id="btnAddRoom" type="submit">Confirm</button>
 		</form>
@@ -58,6 +64,6 @@ button:hover, a:hover {
 	<br>
 	<hr>
 	<div th:replace="footer :: footer"></div>
-<script th:src="@{/js/addRoom.js}"></script> 
+	<script th:src="@{/js/addRoom.js}"></script>
 </body>
 </html>

@@ -66,6 +66,15 @@ button:hover, a:hover {
 .icon-logout{
 	font-size: 25px;
 }
+.price{
+	text-align: center;
+	background: none;
+	border: 0;
+	width: 50%;
+}
+.price:focus {
+	outline: none;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
