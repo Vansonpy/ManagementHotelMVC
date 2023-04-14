@@ -19,7 +19,8 @@ public class MvcConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/", "/loginPage","/forgetPasswordPage","/registerPage", "/signout", "/viewAllRooms","/viewAllRoomsByButton").permitAll();
 // /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
 // If no login, it will redirect to /login page.
-//		http.authorizeRequests().antMatchers("/addRoom").access("hasAnyRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/addroom","/homeAdmin","/aboutAdmin","/blogAdmin","/viewListUsers","/viewAllRooms",
+				"/viewAllSales","/customerReview").access("hasRole('1')");
 // When the user has logged in as XX.
 // But access a page that requires role YY,
 // AccessDeniedException will be thrown.
@@ -27,7 +28,7 @@ public class MvcConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().and().formLogin()//
 //Submit URL of login page.
 				.loginProcessingUrl("/j_spring_security_check")// Submit URL/action form
-				.loginPage("/login")//
+				.loginPage("/loginPage")//
 				.defaultSuccessUrl("/home")//
 				.failureUrl("/login?error=true")
 //Config for Logout Page
