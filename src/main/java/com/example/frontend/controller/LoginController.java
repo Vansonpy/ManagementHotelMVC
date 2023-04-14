@@ -52,15 +52,14 @@ public class LoginController {
 			String url = apiUrl + "/users/login";
 			Users userDTO = restTemplate.postForObject(url, user, Users.class);
 			if (userDTO != null) {
-//				String bearerToken = HttpHeaders.AUTHORIZATION;
-//				String token = bearerToken.substring(7);
-//				Cookie cookie = new Cookie("jwtToken", token);
-//				cookie.setMaxAge(60 * 60 * 24); // Thời gian sống của cookie là 1 ngày
-//				cookie.setPath("/"); // Chỉ định cookie có thể được truy cập bởi tất cả các URL trong ứng dụng
-//				response.addCookie(cookie);
-//				for (Cookie cooki : request.getCookies()) {
-//					
-//				}
+				/*
+				 * String bearerToken = HttpHeaders.AUTHORIZATION; String token =
+				 * bearerToken.substring(7); Cookie cookie = new Cookie("jwtToken", token);
+				 * cookie.setMaxAge(60 * 60 * 24); // Thời gian sống của cookie là 1 ngày
+				 * cookie.setPath("/"); // Chỉ định cookie có thể được truy cập bởi tất cả các
+				 * URL trong ứng dụng response.addCookie(cookie);
+				 */
+				
 				String urlHeader = apiUrl + "/pages/viewByPagesNameAndLocation" + "?pageName=Home" + "&location=Header";
 				List<Pages> listContentHeader = restTemplate.getForObject(urlHeader, List.class);
 
@@ -179,6 +178,7 @@ public class LoginController {
 	@GetMapping("/signout")
 	public String signout(@RequestParam Optional<Integer> id, Model model, HttpServletRequest request) {
 		request.getSession().setAttribute("userSession", null);
+		
 		String urlHeader = apiUrl + "/pages/viewByPagesNameAndLocation" + "?pageName=Home" + "&location=Header";
 		List<Pages> listContentHeader = restTemplate.getForObject(urlHeader, List.class);
 

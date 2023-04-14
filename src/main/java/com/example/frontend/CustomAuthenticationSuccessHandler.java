@@ -21,7 +21,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException, ServletException {
         String token = jwtTokenProvider.createToken(authentication);
-System.out.println("1111");
         Cookie cookie = new Cookie("jwtToken", token);
         cookie.setMaxAge(60 * 60 * 24); // Thời gian sống của cookie là 1 ngày
         cookie.setPath("/"); // Chỉ định cookie có thể được truy cập bởi tất cả các URL trong ứng dụng

@@ -13,7 +13,7 @@ public class RestTemplateConfig {
     @Bean
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
-//        restTemplate.setInterceptors(Collections.singletonList(new RestTemplateInterceptor()));
+        restTemplate.setInterceptors(Collections.singletonList(new RestTemplateInterceptor()));
         return restTemplate;
     }
 }
